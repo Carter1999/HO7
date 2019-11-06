@@ -29,7 +29,7 @@ var do_it = function ()
 
 //calculate the triangle area using Heron's formula (don't remember it? look it up...) and perimeter	
 	floatHeronFormula = (floatTriSide1 + floatTriSide2 + floatTriSide3)/2;
-	floatTriangleArea = Math.sqrt((floatS*(floatS-floatTriSide1)*(floatS-floatTriSide2)*(floatS-floatTriSide3)));
+	floatTriangleArea = Math.sqrt((floatHeronFormula*(floatHeronFormula-floatTriSide1)*(floatHeronFormula-floatTriSide2)*(floatHeronFormula-floatTriSide3)));
 	floatTrianglePerim = floatTriSide1 + floatTriSide2 + floatTriSide3;
 
 //calculate the circle area and circumference using convenient Math Object methods	
@@ -94,28 +94,29 @@ function rectPerim (floatRectWidth_par, floatRectHeight_par)
     var floatRectPerim = 2 * floatRectWidth_par + 2 * floatRectHeight_par;
     return floatRectPerim.toFixed (2);
 }
-var calcHeronFormula = function ()
-{
-	var floatTriSide1 = parseFloat ($("tri_side1").value);
-    var floatTriSide2 = parseFloat($("tri_side2").value);	
-	var floatTriSide3 = parseFloat($("tri_side3").value);
-}
-function heronFormula (floatTriSide1_par,floatTriSide2_par, floatTriSide3_par)
-{
-    var floatHeronFormula = (floatTriSide1_par + floatTriSide2_par + floatTriSide3_par)/2;
-}
+//var calcHeronFormula = function ()
+//{
+	//var floatTriSide1 = parseFloat ($("tri_side1").value);
+    //var floatTriSide2 = parseFloat($("tri_side2").value);	
+	//var floatTriSide3 = parseFloat($("tri_side3").value);
+//}
+//function heronFormula (floatTriSide1_par,floatTriSide2_par, floatTriSide3_par)
+//{
+    //var floatHeronFormula = (floatTriSide1_par + floatTriSide2_par + floatTriSide3_par)/2;
+//}
 var calcTriangleArea = function ()
 {
-    var floatHeronFormula = parseFloat($("heron_formula").value);
+
     var floatTriSide1 = parseFloat($("tri_side1").value);
 	var floatTriSide2 = parseFloat($("tri_side2").value);	
 	var floatTriSide3 = parseFloat($("tri_side3").value);
     
-    alert ("The triangle area is " + triangleArea (floatHeronFormula, floatTriSide1, floatTriSide2, floatTriSide3));
+    alert ("The triangle area is " + triangleArea (floatTriSide1, floatTriSide2, floatTriSide3));
 }
-function triangleArea (floatTriSide1_par, floatTriSide2_par, floatTriSide3_par, floatHeronFormula_par)
+function triangleArea (floatTriSide1_par, floatTriSide2_par, floatTriSide3_par)
 {
-    var floatTriangleArea = Math.sqrt((floatHeronFormula_par*(floatHeronFormula_par-floatTriSide1_par)*(floatHeronFormula_par-floatTriSide2_par)*(floatHeronFormula_par-floatTriSide3_par)));
+   var floatHeronFormula = (floatTriSide1_par + floatTriSide2_par + floatTriSide3_par)/2;
+    var floatTriangleArea = Math.sqrt((floatHeronFormula*(floatHeronFormula-floatTriSide1_par)*(floatHeronFormula-floatTriSide2_par)*(floatHeronFormula-floatTriSide3_par)));
     return floatTriangleArea.toFixed (2);
 }
 var calcTrianglePerim = function ()
@@ -157,6 +158,6 @@ window.onload = function ()
     $("calc_triangle_area").onclick = calcTriangleArea; // runs the calcTriangleArea function when clicked
     $("calc_triangle_perim").onclick = calcTrianglePerim; // runs the calcTrianglePerim function when clicked
     $("calc_circle_area").onclick = calcCircleArea; // runs the calcCircleArea function when clicked
-    $("calc_heron_formula").onclick = calcHeronFormula; // runs calcHeronFormula function when clicked
+
     
 };
